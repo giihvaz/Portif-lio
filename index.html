@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio // Giovana Santos Vaz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#190608;
+    --tyrian:#3a0710;
+    --burgundy:#750d1c;
+    --cardinal:#c32349;
+    --blush:#d66c83;
+    --cream:#ffc7d5;
+    --cream-dim:#d66c83;
+    --line:rgba(214,108,131,0.25);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--wine);
+    background-image:
+      radial-gradient(ellipse 700px 400px at 15% -5%, rgba(172,22,52,0.35), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 100% 30%, rgba(231,114,145,0.12), transparent 60%);
+    color:var(--cream);
+    font-family:'Nunito',sans-serif;
+    min-height:100vh;
+    padding:50px 20px 90px;
+  }
+  .container{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:32px;}
+
+  /* ---------- header ---------- */
+  .hero-header{
+    position:relative;
+    text-align:center;
+    padding:36px 20px 8px;
+  }
+  .swirl{
+    position:absolute;
+    top:-60px;left:50%;
+    transform:translateX(-50%);
+    width:420px;height:420px;
+    background:conic-gradient(var(--cardinal),var(--blush),var(--burgundy),var(--cardinal));
+    filter:blur(70px);
+    opacity:0.28;
+    border-radius:50%;
+    z-index:0;
+    pointer-events:none;
+  }
+  .badge{
+    position:relative;z-index:1;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:56px;height:56px;
+    margin-bottom:14px;
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,0.45));
+  }
+  .badge svg{width:100%;height:100%;}
+  .main-title{
+    position:relative;z-index:1;
+    font-family:'Lobster',cursive;
+    font-weight:400;
+    font-size:clamp(2.4rem,7vw,4rem);
+    color:var(--cream);
+    margin:0 0 6px;
+    text-shadow:0 4px 20px rgba(172,22,52,0.5);
+  }
+  .role-line{
+    position:relative;z-index:1;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    color:var(--blush);
+    font-size:1rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- cards ---------- */
+  .card{
+    background:linear-gradient(180deg,var(--tyrian),#3a001d);
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .section-title{
+    font-family:'Baloo 2',sans-serif;
+    font-size:1.35rem;
+    font-weight:700;
+    color:var(--cream);
+    margin:0 0 22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-title .spark{color:var(--blush);flex:none;}
+
+  /* ---------- about ---------- */
+  .about-layout{display:grid;grid-template-columns:190px 1fr;gap:30px;align-items:start;}
+  @media (max-width:700px){.about-layout{grid-template-columns:1fr;text-align:center;}}
+
+  .photo-frame{
+    position:relative;
+    width:100%;max-width:180px;margin:0 auto;
+  }
+  .photo-strip{
+    background:var(--cream);
+    padding:10px 10px 26px;
+    border-radius:10px;
+    box-shadow:0 14px 30px rgba(0,0,0,0.35);
+    transform:rotate(-2deg);
+  }
+  .photo-strip img{
+    width:100%;
+    aspect-ratio:1/1.1;
+    object-fit:cover;
+    object-position:50% 15%;
+    border-radius:4px;
+    display:block;
+  }
+  .photo-badge{
+    position:absolute;
+    bottom:-14px;right:-10px;
+    width:52px;height:52px;
+    display:flex;align-items:center;justify-content:center;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+    transform:rotate(4deg);
+  }
+  .photo-badge svg{width:100%;height:100%;}
+
+  .about-text p{line-height:1.7;font-size:1rem;color:var(--cream);margin:0 0 14px;}
+  .about-text p.extra{color:var(--cream-dim);}
+
+  .lang-label{
+    font-family:'Baloo 2',sans-serif;font-weight:700;
+    font-size:0.85rem;color:var(--blush);
+    text-transform:uppercase;letter-spacing:0.5px;
+    margin:18px 0 10px;
+  }
+  .lang-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .lang-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(214,108,131,0.12);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:7px 15px;
+    font-family:'Nunito',sans-serif;font-weight:700;
+    font-size:0.82rem;color:var(--cream);
+  }
+  .lang-pill .lvl{color:var(--cream-dim);font-weight:400;}
+
+  /* ---------- skills ---------- */
+  .skills-grid{display:flex;flex-wrap:wrap;gap:10px;}
+  .skill-pill{
+    font-family:'Baloo 2',sans-serif;font-weight:600;
+    font-size:0.9rem;
+    background:rgba(231,114,145,0.1);
+    border:1px solid var(--blush);
+    color:var(--cream);
+    padding:8px 20px;
+    border-radius:999px;
+    transition:all 0.2s ease;
+  }
+  .skill-pill:hover{background:var(--blush);color:var(--wine);transform:translateY(-2px);}
+
+  /* ---------- games ---------- */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;}
+  .project-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--line);
+    padding:22px;border-radius:22px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:all 0.25s ease;
+  }
+  .project-card:hover{border-color:var(--blush);background:rgba(231,114,145,0.06);transform:translateY(-3px);}
+  .project-card h3{
+    font-family:'Baloo 2',sans-serif;font-size:1.15rem;color:var(--cream);margin:0 0 8px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .project-card h3::before{content:"✦";color:var(--blush);font-size:0.9rem;}
+  .project-card p{font-size:0.9rem;color:var(--cream-dim);line-height:1.55;margin:0 0 18px;}
+
+  .btn{
+    font-family:'Baloo 2',sans-serif;font-weight:700;
+    display:inline-block;padding:10px 20px;
+    background:transparent;border:1.5px solid var(--blush);
+    color:var(--cream);text-decoration:none;border-radius:999px;
+    font-size:0.85rem;text-align:center;
+    transition:all 0.2s ease;
+  }
+  .btn:hover{background:var(--blush);color:var(--wine);}
+
+  .btn-primary{
+    background:linear-gradient(135deg,var(--cardinal),var(--burgundy));
+    border:none;color:var(--cream);padding:14px 28px;font-size:0.95rem;
+    box-shadow:0 8px 20px rgba(172,22,52,0.4);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(172,22,52,0.55);}
+
+  .full-itch-link{
+    font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.92rem;
+    display:block;text-align:center;margin-top:20px;
+    color:var(--blush);text-decoration:none;
+  }
+  .full-itch-link:hover{color:var(--cream);}
+
+  /* ---------- gicabooks ---------- */
+  .app-preview-box{
+    width:100%;height:230px;overflow:hidden;border-radius:20px;margin:18px 0;
+    border:1px solid var(--line);
+    background:#1a0010;
+  }
+  .cropped-app-img{width:100%;height:140%;object-fit:cover;object-position:center bottom;}
+
+  footer{
+    text-align:center;font-family:'Baloo 2',sans-serif;font-size:0.9rem;
+    color:var(--cream-dim);margin-top:10px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pill-toggle{transition:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="hero-header">
+      <div class="swirl"></div>
+      <div class="badge">
+        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heartGradHead" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#d66c83"/>
+              <stop offset="100%" stop-color="#9c1c3a"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 84 C22 63 4 43 4 25 C4 10 16 0 30 0 C40 0 48 7 50 14 C52 7 60 0 70 0 C84 0 96 10 96 25 C96 43 78 63 50 84 Z" fill="url(#heartGradHead)"/>
+          <ellipse cx="28" cy="18" rx="11" ry="6" fill="#ffffff" opacity="0.35"/>
+        </svg>
+      </div>
+      <h1 class="main-title">Giovana Santos Vaz</h1>
+      <p class="role-line">jogos · programação · som · design</p>
+    </header>
+
+    <section class="card">
+      <h2 class="section-title"><svg class="spark" viewBox="0 0 100 100" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 C52 30 70 48 100 50 C70 52 52 70 50 100 C48 70 30 52 0 50 C30 48 48 30 50 0 Z" fill="currentColor"/></svg>Sobre mim</h2>
+      <div class="about-layout">
+        <div class="photo-frame">
+          <div class="photo-strip">
+            <img src="images/foto-perfil.jpg" alt="Giovana Santos Vaz">
+          </div>
+          <div class="photo-badge">
+            <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="heartGradPhoto" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#d66c83"/>
+                  <stop offset="100%" stop-color="#9c1c3a"/>
+                </linearGradient>
+              </defs>
+              <path d="M50 84 C22 63 4 43 4 25 C4 10 16 0 30 0 C40 0 48 7 50 14 C52 7 60 0 70 0 C84 0 96 10 96 25 C96 43 78 63 50 84 Z" fill="url(#heartGradPhoto)"/>
+              <ellipse cx="28" cy="18" rx="11" ry="6" fill="#ffffff" opacity="0.35"/>
+            </svg>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>Sou estudante de graduação em Jogos Digitais na PUCPR, com foco principal em programação. Ao lado disso venho estudando som, música e SFX, e também curso Web Design, UI e UX Design.</p>
+          <p class="extra">Como eu gosto de conhecer coisas novas, eu tenho vários hobbies atualmente, começando pelo meu favorito que é ler, e foi por isso, inclusive, que fiz meu primeiro aplicativo sendo de leitura. Também sou viciada em praticar exercícios físicos, principalmente academia, vôlei e dança. Dançar é minha maneira de me sentir mais leve. Adoro escrever sobre qualquer coisa, mas normalmente escrevo apenas por hobby, e também sou apaixonada por tudo que envolve carros e fã de Fórmula 1. Atualmente também estou aprendendo francês inicial.</p>
+
+          <p class="lang-label">Idiomas</p>
+          <div class="lang-row">
+            <span class="lang-pill">Português <span class="lvl">(nativo)</span></span>
+            <span class="lang-pill">Inglês <span class="lvl">(intermediário)</span></span>
+            <span class="lang-pill">Espanhol <span class="lvl">(intermediário)</span></span>
+            <span class="lang-pill">Francês <span class="lvl">(iniciante)</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title"><svg class="spark" viewBox="0 0 100 100" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 C52 30 70 48 100 50 C70 52 52 70 50 100 C48 70 30 52 0 50 C30 48 48 30 50 0 Z" fill="currentColor"/></svg>Conhecimentos &amp; skills</h2>
+      <div class="skills-grid">
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">C#</span>
+        <span class="skill-pill">HTML / CSS</span>
+        <span class="skill-pill">Unity</span>
+        <span class="skill-pill">Unreal Engine</span>
+        <span class="skill-pill">Áudio / SFX</span>
+        <span class="skill-pill">Figma</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title"><svg class="spark" viewBox="0 0 100 100" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 C52 30 70 48 100 50 C70 52 52 70 50 100 C48 70 30 52 0 50 C30 48 48 30 50 0 Z" fill="currentColor"/></svg>Jogos desenvolvidos</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div>
+            <h3>Glitch</h3>
+            <p>Jogo investigativo sobre cibercrimes e mistérios, feito em parceria com um perito e professor de cibersegurança da PUCPR.</p>
+          </div>
+          <a href="https://hi-imlynae.itch.io/glitch" target="_blank" rel="noopener" class="btn">Ver no Itch.io</a>
+        </div>
+        <div class="project-card">
+          <div>
+            <h3>Zodyra</h3>
+            <p>Jogo multiplayer de arena para até 4 jogadores disputarem e se divertirem juntos.</p>
+          </div>
+          <a href="https://morphera.itch.io/zodyra" target="_blank" rel="noopener" class="btn">Ver no Itch.io</a>
+        </div>
+        <div class="project-card">
+          <div>
+            <h3>Espoir</h3>
+            <p>Jogo de plataforma em que Espoir precisa salvar sua terra do caos dos 4 elementos.</p>
+          </div>
+          <a href="https://hi-imlynae.itch.io/espoir" target="_blank" rel="noopener" class="btn">Ver no Itch.io</a>
+        </div>
+        <div class="project-card">
+          <div>
+            <h3>Cryo Rebirth</h3>
+            <p>Point n' click pós-apocalíptico que acompanha a jornada de Alenthus em uma nova Era Glacial.</p>
+          </div>
+          <a href="https://tutui30.itch.io/cryo-rebirth" target="_blank" rel="noopener" class="btn">Ver no Itch.io</a>
+        </div>
+      </div>
+      <a href="https://gihhvz.itch.io/" target="_blank" rel="noopener" class="full-itch-link">Ver perfil completo no itch.io →</a>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title"><svg class="spark" viewBox="0 0 100 100" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 C52 30 70 48 100 50 C70 52 52 70 50 100 C48 70 30 52 0 50 C30 48 48 30 50 0 Z" fill="currentColor"/></svg>Projeto pessoal // GicaBooks</h2>
+      <p style="color:var(--cream-dim);line-height:1.6;">
+        Aplicativo para criação de estante virtual de leitura. Permite cadastrar livros, acompanhar progresso, ver opiniões de outros leitores e montar playlists para ler ao som de alguma coisa.
+      </p>
+
+      <div class="app-preview-box">
+        <img src="images/gicabooks-preview.jpg" alt="Demonstração GicaBooks" class="cropped-app-img">
+      </div>
+
+      <div style="margin-top:15px;">
+        <a href="https://gihs.online/" target="_blank" rel="noopener" class="btn btn-primary">Acessar GicaBooks (gihs.online)</a>
+      </div>
+    </section>
+
+    <footer>giovana santos vaz · 2026</footer>
+
+  </div>
+
+
+</body>
+</html>
